@@ -13,4 +13,4 @@ jobs:
         with:
           from_pr_preview: "true"
           ignore_not_found: "true"
-          token: ${{ secrets.GH_ACTION_DEPLOY_PREVIEW }}
+          token: ${{ secrets.GHA_PREVIEW}}
