@@ -1,19 +1,10 @@
-name: Update App
+name: static-site
+region: nyc1
 
-on:
-  push:
-    branches: [main]
-
-permissions:
-  contents: read
-
-jobs:
-  deploy-app:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Deploy the app
-        uses: digitalocean/app_action/deploy@v2
-        with:
-          token: ${{ secrets.GHA_PREVIEW }}
+services:
+  - name: web
+    dockerfile_path: Dockerfile
+    instance_count: 1
+    instance_size_slug: apps-s-1vcpu-0.5gb
+    routes:
+      - path: /
