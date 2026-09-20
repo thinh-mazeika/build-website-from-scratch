@@ -260,6 +260,10 @@
     }
   }
 
+  [aria-controls="primary-nav"] {
+    display: none;
+  }
+
   .primary-navigation {
     ul {
       display: flex;
@@ -275,6 +279,7 @@
     }
 
     @media (width < 760px) {
+      display: none;
       font-size: var(--font-size-lg);
       font-weight: 700;
       font-family: var(--ff-heading);
@@ -296,6 +301,15 @@
         margin-block-start: 1.5rem;
         padding-block-start: 1.5rem;
       }
+    }
+  }
+
+  @media (width < 760px) {
+    [aria-controls="primary-nav"] {
+      display: block;
+    }
+    [aria-expanded="true"] + .primary-navigation {
+      display: block;
     }
   }
 
