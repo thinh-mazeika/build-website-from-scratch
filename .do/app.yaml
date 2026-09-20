@@ -1,8 +1,12 @@
-name: static-site
+name: mushroom-kingdom
 region: nyc1
 
 services:
   - name: web
+    github:
+      repo: https://github.com/thinh-mazeika/build-website-from-scratch
+      branch: main
+      deploy-on-push: true
     dockerfile_path: Dockerfile
     instance_count: 1
     instance_size_slug: apps-s-1vcpu-0.5gb
