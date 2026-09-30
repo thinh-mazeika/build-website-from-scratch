@@ -8,13 +8,24 @@ const currentFilters = {
   edible: "all",
 };
 
+cards.forEach((card, index) => {
+  const mushroomId = `mushroom-${index + 1}`;
+  card.style.viewTransitionName = `card-${mushroomId}`;
+});
+
 seasonFilter.addEventListener("change", updateFilter);
 edibleFilter.addEventListener("change", updateFilter);
 
 function updateFilter(e) {
   const filterType = e.target.name;
   currentFilters[filterType] = e.target.value;
-  filterCards();
+
+  if (!document.startViewTransition()) {
+    filterCards();
+    return;
+  }
+
+  document.startViewTransition(() => filterCards());
 }
 
 function filterCards() {
